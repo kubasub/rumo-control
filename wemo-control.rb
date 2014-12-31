@@ -50,6 +50,7 @@ when GETSIGNALSTRENGTH
   state_label = 'GetSignalStrength'
   state = '0'
 when GETFRIENDLYNAME
+  raise NotImplementedError, 'GETFRIENDLYNAME has not yet been implemented.'
 end
 
 puts call = %Q(curl -0 -A '' -X POST -H 'Accept: ' -H 'Content-type: text/xml; charset=\"utf-8\"' -H 'SOAPACTION: \"urn:Belkin:service:basicevent:1##{event}\"' --data '<?xml version=\"1.0\" encoding=\"utf-8\"?><s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"><s:Body><u:#{event} xmlns:u=\"urn:Belkin:service:basicevent:1\"><#{state_label}>#{state}</#{state_label}></u:#{event}></s:Body></s:Envelope>' -s http://#{ip}:#{port}/upnp/control/basicevent1)
