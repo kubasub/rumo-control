@@ -3,7 +3,7 @@ commands = [ON = 'ON',
             GETSTATE = 'GETSTATE',
             GETSIGNALSTRENGTH = 'GETSIGNALSTRENGTH',
             GETFRIENDLYNAME = 'GETFRIENDLYNAME']
-ports = (49153..49155)
+ports = (49152..49155)
 
 ip = ARGV[0]
 command = ARGV[1]
@@ -23,7 +23,7 @@ unless commands.include? command
   exit
 end
 
-port = ports.find { |port| system("curl -s -m 3 #{ip}:#{port}") != '' }
+port = ports.find { |port| system("curl -s -m 3 #{ip}:#{port}") }
 unless port
   puts 'ERROR: could not determine port.'
   exit
